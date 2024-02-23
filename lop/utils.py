@@ -8,10 +8,11 @@ def add_logo_to_pdf(pdf_file, output_pdf_path, logo):
     # Create a PDF canvas
     packet = io.BytesIO()
     can = canvas.Canvas(packet, pagesize=letter)
-    
+    #transparency=0.5
     # Draw the logo on the canvas
     logo_reader = ImageReader(logo)
-    can.drawImage(logo_reader, 10, 10, width=590, height=120)
+    can.setFillColorRGB(1, 1, 1, 1)
+    can.drawImage(logo_reader, 10, 10, width=570, height=150,mask="auto")
 
     # Close the canvas
     can.save()
